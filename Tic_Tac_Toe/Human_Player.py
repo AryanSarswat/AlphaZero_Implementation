@@ -1,4 +1,4 @@
-from Player import *
+from .Player import *
 
 class Human_Player(Player):
     def __init__(self, marker):

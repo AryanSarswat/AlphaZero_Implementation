@@ -1,6 +1,6 @@
-from Board import *
-from Random_agent import *
-from Human_Player import *
+from .Board import *
+from .Random_agent import *
+from .Human_Player import *
 
 """
 Class for Playing the game
@@ -10,7 +10,7 @@ Parameters:
     Player1: Player object
     Player2: Player object
 """
-class Game:
+class Game():
     def __init__(self, Player1, Player2):
         self.board = Board(3)
         self.ended = False
@@ -23,7 +23,7 @@ class Game:
             print(self.board)
             turn =  self.board.get_turn()
             move = self.PlayerX.get_move(self.board) if turn == 1 else self.PlayerY.get_move(self.board)
-            self.board.make_move(turn, move)
+            self.board = self.board.make_move(turn, move)
             winner = self.board.get_winner()
             if winner != None:
                 self.ended = True
@@ -34,3 +34,7 @@ class Game:
                     print("Winner is:", winner)
                 print("\n")
                 print(self.board)
+                
+if __name__ == "__main__":
+    game = Game(Human_Player(), Random_agent())
+    game.play()

@@ -1,5 +1,5 @@
 import numpy as np
-from Player import *
+from .Player import *
 
 class RandomAgent(Player):
     def __init__(self, marker):

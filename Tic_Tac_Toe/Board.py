@@ -26,16 +26,21 @@ class Board:
     """
     def make_move(self, player, move):
         #Check if move is valid
-        if self.state[move] != 0 or self.turn != player:
+        if self.state[move[0]][move[1]] != 0 or self.turn != player:
             print("Invalid move")
             print(self.state)
             print(self.turn)
             print(move)
-            return
+            return self
+        # Make a empty Board
+        new_board = Board(self.size)
+        new_board.state = self.state.copy()
+        new_board.turn = self.turn
         #Make move
-        self.state[move] = player
+        new_board.state[move[0]][move[1]] = player
         #Change turn
-        self.turn *= -1
+        new_board.turn *= -1
+        return new_board
     
     """
     Checks if the game is over
